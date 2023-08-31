@@ -29,6 +29,9 @@
             display: flex;
             justify-content: center;
             padding: 0;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         nav ul li {
@@ -38,6 +41,16 @@
         nav ul li a {
             color: black;
             text-decoration: none;
+        }
+        nav ul li a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+        footer {
+        position: absolute; /* Абсолютное позиционирование */
+        bottom: 0; /* Размещаем внизу страницы */
+        text-align: center; /* Выравнивание текста по центру */
+        padding: 10px 0; /* Добавляем немного отступов */
         }
     </style>
 </head>
@@ -58,8 +71,8 @@
     
     <main>
         <section>
-            <p>Привет! Я Алексей, и это моя личная страница. Я начинающий DevOps инженер и увлекаюсь автоматизацией процессов и облачными технологиями.</p>
-            <p>В свободное время я также учусь новым навыкам, читаю книги и занимаюсь спортом.</p>
+            <p>Привет! Я Алексей, системный администратор Linux, ищучаю DevOps инструменты.</p>
+            <p>В свободное время я также учусь новым навыкам, занимаюсь спортом.</p>
         </section>
     </main>
     

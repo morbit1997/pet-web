@@ -9,6 +9,8 @@
             background-image: url('background.jpg');
             background-size: cover;
             color: black;
+            position: relative; /* Добавьте это */
+            min-height: 100vh;
         }
         
         /* Стиль для центрированного контейнера */
@@ -42,12 +44,22 @@
             color: black;
             text-decoration: none;
         }
+        nav ul li a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+        footer {
+        position: absolute; /* Абсолютное позиционирование */
+        bottom: 0; /* Размещаем внизу страницы */
+        text-align: center; /* Выравнивание текста по центру */
+        padding: 10px 0; /* Добавляем немного отступов */
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Привет, меня зовут Алексей</h1>
+            <h1>Hello World page</h1>
         </header>
         
         <nav>
@@ -61,8 +73,9 @@
         
         <main>
             <section>
-                <h2>О себе</h2>
-                <p>Привет! Я Алексей, и это моя личная страница. Здесь я расскажу немного о себе.</p>
+                <h2>Привет</h2>
+                <p>Меня зовут Алексей, и это моя web-страница. Здесь я расскажу немного о себе.</p>
+                <img src="homyak.jpg">
             </section>
         </main>
         

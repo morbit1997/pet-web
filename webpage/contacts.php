@@ -29,6 +29,9 @@
             display: flex;
             justify-content: center;
             padding: 0;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         nav ul li {
@@ -42,6 +45,12 @@
         nav ul li a:hover {
             color: black;
             text-decoration: underline;
+        }
+        footer {
+        position: absolute; /* Абсолютное позиционирование */
+        bottom: 0; /* Размещаем внизу страницы */
+        text-align: center; /* Выравнивание текста по центру */
+        padding: 10px 0; /* Добавляем немного отступов */
         }
     </style>
 </head>
@@ -66,7 +75,7 @@
             <ul>
                 <li>Email: <a href="mailto:morbit1997@gmail.com">morbit1997@gmail.com</a></li>
                 <li>LinkedIn: <a href="https://www.linkedin.com/in/алексей-гаврилов-86454898">linkedin.com/in/алексей-гаврилов-86454898</a></li>
-                <li>GitHub: <a href="https://github.com/morbit1997">github.com/morbit1997</a></li>
+                <li>GitHub: <a href="https://github.com/morbit1997/pet-web">ссылка на проект этого сайта</a></li>
             </ul>
         </section>
     </main>

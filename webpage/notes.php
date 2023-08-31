@@ -57,6 +57,9 @@ mysqli_close($connection);
             display: flex;
             justify-content: center;
             padding: 0;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         nav ul li {
@@ -67,6 +70,10 @@ mysqli_close($connection);
             color: black;
             text-decoration: none;
         }
+        nav ul li a:hover {
+            color: black;
+            text-decoration: underline;
+        }
         
         textarea {
         resize: none;
@@ -75,6 +82,12 @@ mysqli_close($connection);
         textarea.fixed-size {
             width: 300px;
             height: 100px;
+        }
+        footer {
+        position: absolute; /* Абсолютное позиционирование */
+        bottom: 0; /* Размещаем внизу страницы */
+        text-align: center; /* Выравнивание текста по центру */
+        padding: 10px 0; /* Добавляем немного отступов */
         }
     </style>
 </head>
@@ -112,7 +125,7 @@ mysqli_close($connection);
     </main>
     
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Доска заметок</p>
+        <p>&copy; <?php echo date("Y"); ?> Моя личная страница</p>
     </footer>
 </div>
 </body>
