@@ -1,0 +1,24 @@
+---
+- name: Install apache2 php
+  hosts: linux1
+  become: yes
+
+  vars:
+    source_folder: ./webpage
+    dest_folder: /var/www/html
+
+  tasks:
+    - name: install apache2
+      apt: name=apache2 state=latest
+
+    - name: install php
+      apt: name=php state=latest
+
+    - name: copy my webpage to webserver
+      copy: src={{ item }} dest={{ dest_folder }}
+      with_fileglob: "{{ source_folder }}/*.*"
+      notify: Restart apache2
+
+  handlers:
+    - name: Restart apache2
+      service: name=apache2 state=restarted
