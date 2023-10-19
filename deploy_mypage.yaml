@@ -13,7 +13,10 @@
 
     - name: install php
       apt: name=php state=latest
-
+    
+    - name: install apache2
+      apt: name=php-mysqli state=latest
+      
     - name: copy my webpage to webserver
       copy: src={{ item }} dest={{ dest_folder }}
       with_fileglob: "{{ source_folder }}/*.*"
