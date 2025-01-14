@@ -11,10 +11,10 @@ pipeline {
             script{
                 checkout scm
                 docker.withRegistry("","dockerehub_morbit1997") {
-                    def dockerfile-nginx = "Dockerfile-nginx"
-                    def dockerfile-php = "Dockerfile-php"
-                    def nginxImage = docker.build("nginx:${env.BUILD_ID}","-f ${dockerfile-nginx} ./Dockerfiles")
-                    def phpImage = docker.build("php:${env.BUILD_ID}","-f ${dockerfile-php} ./Dockerfiles")
+                    def dockerfileNginx = "Dockerfile-nginx"
+                    def dockerfilePhp = "Dockerfile-php"
+                    def nginxImage = docker.build("nginx:${env.BUILD_ID}","-f ${dockerfileNginx} ./Dockerfiles")
+                    def phpImage = docker.build("php:${env.BUILD_ID}","-f ${dockerfilePhp} ./Dockerfiles")
                     nginxImage.push()
                     phpImage.push()
                 }
