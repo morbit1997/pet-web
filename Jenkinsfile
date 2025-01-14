@@ -5,16 +5,18 @@ pipeline {
     agent any
     stages{
         stage("Build") {
-            script{
-                git "https://github.com/morbit1997/pet-web.git"
-                checkout scm
-                docker.withRegistry("","dockerehub_morbit1997") {
-                    def dockerfileNginx = "Dockerfile-nginx"
-                    def dockerfilePhp = "Dockerfile-php"
-                    def nginxImage = docker.build("nginx:${env.BUILD_ID}","-f ${dockerfileNginx} ./Dockerfiles")
-                    def phpImage = docker.build("php:${env.BUILD_ID}","-f ${dockerfilePhp} ./Dockerfiles")
-                    nginxImage.push()
-                    phpImage.push()
+            steps{
+                script{
+                    git "https://github.com/morbit1997/pet-web.git"
+                    checkout scm
+                    docker.withRegistry("","dockerehub_morbit1997") {
+                        def dockerfileNginx = "Dockerfile-nginx"
+                        def dockerfilePhp = "Dockerfile-php"
+                        def nginxImage = docker.build("nginx:${env.BUILD_ID}","-f ${dockerfileNginx} ./Dockerfiles")
+                        def phpImage = docker.build("php:${env.BUILD_ID}","-f ${dockerfilePhp} ./Dockerfiles")
+                        nginxImage.push()
+                        phpImage.push()
+                    }
                 }
             }
         }
@@ -26,7 +28,7 @@ pipeline {
                 }
             }
             steps{
-                sh 'envsubst '${CI_COMMIT_SHORT_SHA}' < webapp.nomad.hcl > job.nomad'
+                sh 'envsubst "${CI_COMMIT_SHORT_SHA}" < webapp.nomad.hcl > job.nomad'
                 sh 'cat job.nomad'
                 sh 'nomad validate job.nomad'
                 sh 'nomad plan job.nomad || if [ $? -eq 255 ]; then exit 255; else echo "success"; fi'
