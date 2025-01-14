@@ -1,0 +1,28 @@
+services:
+  nginx:
+    build:
+      dockerfile: Dockerfile-nginx
+    container_name: nginx
+    ports:
+      - "8080:80"
+    restart: always
+  php:
+    container_name: php
+    build:
+      dockerfile: Dockerfile-php
+    restart: always
+  mysql:
+    container_name: mysql
+    image: mysql:9.0.0
+    restart: always
+    env_file:
+      - ".env"
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - "./mysql:/var/lib/mysql"
+      - "./notesdb.sql:/docker-entrypoint-initdb.d/init.sql"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

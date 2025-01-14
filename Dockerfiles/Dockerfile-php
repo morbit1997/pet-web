@@ -1,0 +1,4 @@
+FROM bitnami/php-fpm:8.3
+WORKDIR "/var/www/myapp"
+COPY "webpage/*" .
+CMD ["php-fpm", "-F", "--pid", "/opt/bitnami/php/tmp/php-fpm.pid", "-y", "/opt/bitnami/php/etc/php-fpm.conf"]
