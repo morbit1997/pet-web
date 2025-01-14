@@ -28,6 +28,7 @@ pipeline {
                 }
             }
             steps{
+                checkout scm
                 sh 'envsubst "${CI_COMMIT_SHORT_SHA}" < webapp.nomad.hcl > job.nomad'
                 sh 'cat job.nomad'
                 sh 'nomad validate job.nomad'
