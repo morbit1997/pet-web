@@ -12,8 +12,8 @@ pipeline {
                     docker.withRegistry("","dockerehub_morbit1997") {
                         def dockerfileNginx = "Dockerfile-nginx"
                         def dockerfilePhp = "Dockerfile-php"
-                        def nginxImage = docker.build("nginx:${env.BUILD_ID}","-f ${dockerfileNginx} ./Dockerfiles")
-                        def phpImage = docker.build("php:${env.BUILD_ID}","-f ${dockerfilePhp} ./Dockerfiles")
+                        def nginxImage = docker.build("nginx:${env.BUILD_ID}","-f ${dockerfileNginx} Dockerfiles")
+                        def phpImage = docker.build("php:${env.BUILD_ID}","-f ${dockerfilePhp} Dockerfiles")
                         nginxImage.push()
                         phpImage.push()
                     }
