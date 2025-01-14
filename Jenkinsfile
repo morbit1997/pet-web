@@ -4,11 +4,9 @@ pipeline {
     }
     agent any
     stages{
-        stage("Clone git repo") {
-            git "https://github.com/morbit1997/pet-web.git"
-        }
         stage("Build") {
             script{
+                git "https://github.com/morbit1997/pet-web.git"
                 checkout scm
                 docker.withRegistry("","dockerehub_morbit1997") {
                     def dockerfileNginx = "Dockerfile-nginx"
