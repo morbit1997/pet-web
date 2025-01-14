@@ -32,7 +32,7 @@ server {
 EOF
       }
       config {
-        image = "morbit1997/nginx:1"
+        image = "morbit1997/nginx:${env.BUILD_ID}"
         ports = ["http"]
         volumes = [
           "local/myapp.conf:/etc/nginx/conf.d/default.conf"
@@ -54,7 +54,7 @@ EOF
       driver = "docker"
       
       config {
-        image = "morbit1997/php:1"
+        image = "morbit1997/php:${env.BUILD_ID}"
       }
     }
     }
