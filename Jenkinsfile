@@ -21,13 +21,19 @@ pipeline {
             }
         }
         stage("Deploy to nomad"){
-            steps{
-                script{
-                    checkout scm
-                    docker.image('hashicorp/nomad').withRun('-e "NOMAD_ADDR=http://192.168.1.12:4646"') {c ->
-                        sh 'status'
-                    }
+            agent{
+                docker {
+                    image 'morbit1997/nomad_deployer'
+                    args '-e NOMAD_ADDR="${nomad_addr}"'
                 }
+            }
+            steps{
+                checkout scm
+                sh 'envsubst "${CI_COMMIT_SHORT_SHA}" < webapp.nomad.hcl > job.nomad'
+                sh 'cat job.nomad'
+                sh 'nomad validate job.nomad'
+                sh 'nomad plan job.nomad || if [ $? -eq 255 ]; then exit 255; else echo "success"; fi'
+                sh 'nomad run job.nomad'
             }
         }
     }
