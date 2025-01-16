@@ -55,8 +55,10 @@ EOF
     task "php" {
       driver = "docker"
       
+      
       config {
         image = "morbit1997/php:$BUILD_ID"
+        ports = ["php"]
       }
       service {
         name = "php"
