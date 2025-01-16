@@ -30,7 +30,7 @@ pipeline {
             steps{
                 checkout scm
                 sh 'printenv'
-                sh "envsubst $BUILD_ID < webapp.nomad.hcl > job.nomad"
+                sh "envsubst $BUILD_ID < webapp.nomad.hcl"
                 sh 'cat job.nomad'
                 sh 'nomad validate job.nomad'
                 sh 'nomad plan job.nomad || if [ $? -eq 255 ]; then exit 255; else echo "success"; fi'
