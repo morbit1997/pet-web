@@ -4,6 +4,7 @@ job "webapp" {
 
     network {
         port "http" {to = 80}
+        port "php" {to = 9000}
     }
 
     task "nginx" {
@@ -56,6 +57,10 @@ EOF
       
       config {
         image = "morbit1997/php:$BUILD_ID"
+      }
+      service {
+        name = "php"
+        port = "php"
       }
     }
   }
