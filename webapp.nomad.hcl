@@ -37,6 +37,7 @@ EOF
         volumes = [
           "local/myapp.conf:/etc/nginx/conf.d/default.conf"
         ]
+      }
       service {
         name = "nginx"
         port = "http"
@@ -47,7 +48,6 @@ EOF
           timeout  = "2s"
           path = "/index.php"
         }
-      }
       }
     }
 
