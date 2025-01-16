@@ -30,6 +30,8 @@ pipeline {
             }
             steps{
                 checkout scm
+                sh "echo $tag"
+                sh "printenv"
                 sh "envsubst '$tag' < webapp.nomad.hcl > job.nomad"
                 sh 'cat job.nomad'
                 sh 'nomad validate job.nomad'
