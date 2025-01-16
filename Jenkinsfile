@@ -24,7 +24,7 @@ pipeline {
         stage("Deploy to nomad"){
             agent{
                 docker {
-                    image 'morbit1997/nomad_deployer'
+                    image 'morbit1997/nomad_deploy:1'
                     args '-e NOMAD_ADDR="${nomad_addr}"'
                 }
             }
