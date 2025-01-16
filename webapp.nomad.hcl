@@ -49,6 +49,7 @@ EOF
         }
       }
       }
+    }
 
     task "php" {
       driver = "docker"
@@ -56,7 +57,6 @@ EOF
       config {
         image = "morbit1997/php:${tag}"
       }
-    }
     }
   }
 }
