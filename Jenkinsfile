@@ -1,7 +1,6 @@
 pipeline {
     environment {
         nomad_addr = "http://192.168.1.12:4646"
-        tag = "${env.BUILD_ID}"
     }
     agent any
     stages{
@@ -30,9 +29,8 @@ pipeline {
             }
             steps{
                 checkout scm
-                sh "echo $tag"
-                sh "printenv"
-                sh "envsubst '$tag' < webapp.nomad.hcl > job.nomad"
+                sh 'printenv'
+                sh 'envsubst < webapp.nomad.hcl > job.nomad'
                 sh 'cat job.nomad'
                 sh 'nomad validate job.nomad'
                 sh 'nomad plan job.nomad || if [ $? -eq 255 ]; then exit 255; else echo "success"; fi'
