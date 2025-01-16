@@ -9,7 +9,6 @@ pipeline {
             steps{
                 script{
                     git "https://github.com/morbit1997/pet-web.git"
-                    checkout scm
                     docker.withRegistry("","dockerehub_morbit1997") {
                         def dockerfileNginx = "./Dockerfiles/Dockerfile-nginx"
                         def dockerfilePhp = "./Dockerfiles/Dockerfile-php"
@@ -29,7 +28,6 @@ pipeline {
                 }
             }
             steps{
-                checkout scm
                 sh 'envsubst "$tag" < webapp.nomad.hcl > job.nomad'
                 sh 'cat job.nomad'
                 sh 'nomad validate job.nomad'
