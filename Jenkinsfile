@@ -1,7 +1,7 @@
 pipeline {
     environment {
         nomad_addr = "http://192.168.1.12:4646"
-        tag = ${env.BUILD_ID}
+        tag = "${env.BUILD_ID}"
     }
     agent any
     stages{
