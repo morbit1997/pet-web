@@ -64,6 +64,9 @@ EOF
         name = "php"
         port = "php"
       }
+      lifecycle {
+        hook = "prestart" # Эта задача должна запуститься до других
+      }
     }
   }
 }
