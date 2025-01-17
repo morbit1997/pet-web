@@ -1,6 +1,6 @@
 <?php
 // Подключение к базе данных
-$connection = mysqli_connect('mysql', 'root', '123456', 'test');
+$connection = mysqli_connect('mysql-server.service.consul', 'root', '123456', 'test');
 
 // Проверка соединения
 if (!$connection) {
