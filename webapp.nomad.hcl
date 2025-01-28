@@ -40,7 +40,7 @@ EOF
         ]
       }
       service {
-        name = "nginx"
+        name = "myapp"
         port = "http"
 
         check {
